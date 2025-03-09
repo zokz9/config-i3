@@ -1,4 +1,8 @@
 #!/bin/bash
+if [ -n "$BLOCK_BUTTON" ]; then
+# Запускаем терминал (замените 'konsole' на нужный вам терминал).
+konsole -e nmtui &
+fi
 INTERFACE=$(ip route | awk '/default/ {print $5}')
 IP=$(ip addr show $INTERFACE | grep "inet " | awk '{print $2}' | cut -d/ -f1)
 SSID=$(iwgetid -r)
